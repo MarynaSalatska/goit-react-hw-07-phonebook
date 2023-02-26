@@ -6,6 +6,7 @@ import css from './ContactListItem.module.css';
 export function ContactListItem({ name, number, btnId }) {
   const dispatch = useDispatch();
   const deleteContacts = e => {
+    
     dispatch(deleteAction(e.target.id));
   };
 
