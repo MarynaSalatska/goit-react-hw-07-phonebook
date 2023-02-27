@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import css from './FriendForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
+import { addContactOperation } from 'redux/operations';
 export function FriendForm({ onSubmit }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -33,7 +33,7 @@ export function FriendForm({ onSubmit }) {
       alert(`${name} is already in contacts!`);
       return;
     }
-    dispatch(addContact(newContact));
+    dispatch(addContactOperation(newContact));
     reset();
   };
 

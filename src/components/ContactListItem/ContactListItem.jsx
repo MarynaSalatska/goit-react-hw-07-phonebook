@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { deleteAction } from 'redux/contactsSlice';
+import { deleteContactOperation } from 'redux/operations';
 import css from './ContactListItem.module.css';
+// import { deleteContact } from '../../services/api';
 
 export function ContactListItem({ name, number, btnId }) {
   const dispatch = useDispatch();
   const deleteContacts = e => {
-    
-    dispatch(deleteAction(e.target.id));
+    dispatch(deleteContactOperation(e.target.id));
   };
 
   return (
@@ -24,5 +24,4 @@ ContactListItem.propTypes = {
   btnId: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
-  
 };
