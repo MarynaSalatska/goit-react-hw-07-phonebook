@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import css from './FriendForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContactOperation } from 'redux/operations';
+import { selectContacts } from 'redux/selectors';
 export function FriendForm({ onSubmit }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   
-  const contacts = useSelector(state => state.contacts.items);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const handleInputChange = e => {

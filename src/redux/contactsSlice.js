@@ -25,14 +25,15 @@ const contactsSlice = createSlice({
       .addCase(addContactOperation.pending, pendingHandler)
       .addCase(addContactOperation.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.items = action.payload;
+        state.items = [...state.items, action.payload];
       })
       .addCase(addContactOperation.rejected, rejectHandler)
 
       .addCase(deleteContactOperation.pending, pendingHandler)
       .addCase(deleteContactOperation.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.items = action.payload;
+        state.items = state.items.filter(item => item.id !== action.payload.id);
+        console.log(action.payload);
       })
       .addCase(deleteContactOperation.rejected, rejectHandler);
   },

@@ -3,18 +3,18 @@ axios.defaults.baseURL = 'https://63fcab068ef914c5559ca25b.mockapi.io';
 
 export const fetchContacts = async () => {
   const { data } = await axios.get('contacts');
-  console.log(data);
   return data;
 };
 
-export const addContacts = async () => {
-  const { data } = await axios.get(`/contacts`);
-  console.log(data);
+export const addContacts = async ({name, number}) => {
+  const { data } = await axios.post(`/contacts`,{name,number});
   return data;
 };
 
 export const deleteContact = async id => {
-  const { data } = await axios.get(`/contacts/${id}`);
+  const { data } = await axios.delete(
+    `https://63fcab068ef914c5559ca25b.mockapi.io/contacts/${id}`
+  );
   console.log(data);
   return data;
 };

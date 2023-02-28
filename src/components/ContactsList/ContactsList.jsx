@@ -1,11 +1,18 @@
 import { ContactListItem } from 'components/ContactListItem/ContactListItem';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getContactsOperation } from 'redux/operations';
+import { selectContacts, selectFilter } from 'redux/selectors';
+
 
 export function ContactsList() {
-  const contacts = useSelector(state => state.contacts.items);
-  console.log(contacts);
-  const filter = useSelector(state => state.filter);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getContactsOperation());
+  }, [dispatch]);
+  const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectFilter);
   const filterContacts = contacts.filter(contact =>
     contact.name.toLowerCase().trim().includes(filter.toLowerCase())
   );
