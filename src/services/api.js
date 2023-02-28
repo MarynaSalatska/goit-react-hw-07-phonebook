@@ -6,15 +6,13 @@ export const fetchContacts = async () => {
   return data;
 };
 
-export const addContacts = async ({name, number}) => {
-  const { data } = await axios.post(`/contacts`,{name,number});
+export const addContacts = async ({ name, number }) => {
+  const { data } = await axios.post(`/contacts`, { name, number });
   return data;
 };
 
 export const deleteContact = async id => {
-  const { data } = await axios.delete(
-    `https://63fcab068ef914c5559ca25b.mockapi.io/contacts/${id}`
-  );
+  const { data } = await axios.delete(`/contacts/${id}`);
   console.log(data);
   return data;
 };
